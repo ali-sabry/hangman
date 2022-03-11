@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- App Title -->
+	<title>Hang Man Game</title>
+	<!-- Favicon -->
+	<link rel="icon" href="images/icon.png" />
+	<!-- Css Main File -->
+	<link rel="stylesheet" href="css/hang.css" />
+</head>
+<body>
+	<!-- Start Main App Container -->
+	<div class="container">
+		<div class="hang-man">
+			<!-- Upper Bar -->
+			<div class="upper">
+				<!-- App Name -->
+				<div class="brand">
+					<h3>hang man</h3>
+				</div>
+				<!-- category -->
+				<div class="category">
+					category is : <span></span>
+				</div>
+			</div>
+			<!-- App Instraction -->
+			<div class="instruction">
+				<ul>
+					<li>
+						read the category of word on top corner of the app .
+					</li>
+					<li>
+						guess the word on your mind &amp; start select correct letter from the panel .
+					</li>
+					<li>
+						the choose correct letter will be show on bottom bar .
+					</li>
+				</ul>
+			</div>
+			<!-- Draw -->
+			<div class="draw">
+				<div class="rope">
+					<div class="man">
+						<div class="head"></div>
+						<div class="arms"></div>
+						<div class="legs"></div>
+					</div>
+				</div>
+				<div class="col"></div>
+				<div class="stand"></div>
+			</div>
+			<!-- Letter To clicked -->
+			<div class="letters"></div>
+			<!-- Letter gusess -->
+			<div class="letter-gusses"></div>
+		</div>		
+	</div>
+	<!-- End Main App Container -->
+
+	<!-- Main JS File -->
+	<script src="js/hang.js"></script>
+</body>
+</html>

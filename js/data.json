@@ -1,0 +1,9 @@
+{
+    "movies": ["Prestige", "Inception", "Interstellar", "Whiplash", "Memento", "Coco", "Up"],
+    "peoples": ["Albert Einstien", "Hitchcock", "Alexander", "Cleopatra", "Mahatma Ghandi"],
+    "programming": ["Php", "Javascript", "Go", "Scala", "Forten", "R", "Mysql", "Python"],
+    "cars": ["Audi", "BMW", "Dodge", "Ford", "Gmc", "Honda", "Jeep", "Kia", "Nessan", "Tesla"],
+    "sports": ["Golf", "Soccer", "Tennis", "Swimming", "cycling", "Football"],
+    "Animals": ["Bear", "Lion", "Zebra", "Rabbit", "Shark", "Tiger", "Fox"],
+    "countries": ["Syria", "Palestine", "Yemen", "Egypt", "Bahrain", "Qatar"]
+}
