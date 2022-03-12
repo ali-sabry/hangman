@@ -340,5 +340,10 @@
         .hang-man .draw, .hang-man .letters {
             width:  100%;
         }
+        .instruction {
+            display: flex;
+            order: 3;
+            margin-top: 20px;
+        }
     }
 /**** End Responsive Code  *****/

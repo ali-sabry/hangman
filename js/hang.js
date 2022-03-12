@@ -13,10 +13,6 @@
 		let draw         = document.querySelector('.draw');
 		let attempts     = 0;
 
-		// Sounds
-		let succses = new Audio('../sound/succses.wav');
-		let fail = new Audio('../sound/fail.wav');
-
 		// Create Get Hint Button
 		let getHint = document.createElement('btn');
 
@@ -124,9 +120,6 @@
 							// Set The Clicked Letter To Gusses Span 
 							gussesLetter.children[index].innerHTML = ele;
 
-							// Play Sound
-							succses.play();
-
 							// Hide The Hint Button
 							 getHint.style.display = 'none';
 						};
@@ -139,9 +132,6 @@
 
 						// Add Wrong Class To Draw
 						draw.classList.add(`wrong-${attempts}`); 
-						
-						// Play Sound
-						fail.play();
 						
 						// Generate Random Number & Letter
 						let randNum       = Math.floor(Math.random() * theWord.length);
