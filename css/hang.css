@@ -407,5 +407,8 @@ body {
         .hang-man .upper .category {
             letter-spacing: 0;
         }
+        .instruction {
+           heigth: 200vh 
+        }
     }
 /**** End Responsive Code  *****/
