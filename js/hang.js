@@ -177,16 +177,6 @@
 
 							// The Hint Button On Click Action.
 							getHint.onclick = ()=> {
-								// Handel If The Hint Letter Is Already Selected
-								Array.from(gussesLetter.children).forEach( (ele)=> {
-									if(ele.textContent === randLett) {
-										if(theWord.length !== randNum) {
-											randNum++;
-										} else {
-											randNum--;
-										};
-									};
-								});
 
 								// Hide The Button
 								getHint.remove();
