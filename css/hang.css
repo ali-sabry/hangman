@@ -37,7 +37,7 @@ body {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        justify-self: center;
+        justify-content: center;
     }
     /* Instruction List */
     .instruction ul {
@@ -53,7 +53,7 @@ body {
         word-spacing: 2px;
     }
     /* Start Game Button */
-    .instruction button {
+    .instruction button { 
         display: block;
         width: 50%;
         margin: 0 auto;
