@@ -27,7 +27,7 @@ Then Start Select Word Letters From Letters Panel Words Comes Dynamic From Json 
 # Features 
 * Sounds Effect
 * Session Storage
-* Unlimmted Dynimc Words 
+
 
 <hr />
 
