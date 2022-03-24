@@ -1,307 +1,359 @@
+/*=================  =================*/
+    /*
+        Project Name: Hangman Game
+        Author Name : Ali Sabry
+    */
+/*=================  =================*/
+
+
 * {
     box-sizing: border-box;
 }
 
-/* App Conatiner */
-.container  {
-    width: 98%;
-    padding: 0 1%;
-}
-
-/* Game Container */
-.hang-man {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-/* Instruction Container */
-.instruction {
-    width: 100%;
-    background-color: #009688;
-    color: #fff;
-    text-transform: capitalize;
-    margin-bottom: 30px;
-    padding: 0 20px;
-}
-/* Instruction List */
-.instruction ul {
-    list-style-type: auto;
-}
-/* Instruction List Item */
-.instruction ul li {
-    font-size: 23px;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-}
-
-/* Game Upperbar */
-.hang-man .upper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: 50px;
-    text-transform: capitalize;
-    border-bottom: 2px solid #ddd;
-}
-
-/* App Name & Category Of Word */
-.hang-man .upper .category {
-    font-size: 20px;
-}
-
-.hang-man .upper .brand,
-.hang-man .upper .category span {
-    font-weight: bold;
-    font-size: 23px;
-    color: #009688;
-}
-
-/* Draw Container */
-.hang-man .draw {
-    position: relative;
-    padding-top: 20px;
-    width: 49%;
-    margin-right: 1%;
-    height: 300px;
-    background-color: #f1f1f1;
-}
-
-/* Draw Stand */
-.hang-man .draw .stand {
-    width: 70px;
-    height: 3px;
+body {
     background-color: #000;
-    margin: auto;
-    display: none;
+    font-family: sans-serif;
 }
 
-/* Draw Column */
-.hang-man .draw .col {
-    width: 3px;
-    height: 270px;
-    background-color: #000;
-    margin: auto;
-    display: none;
-}
+/*================= Game Conatiner =================*/
+    .container  {
+        width: 98%;
+        padding: 0 1%;
+    }
 
-/* Rope Stand */
-.hang-man .draw .rope {
-    width: 250px;
-    height: 3px;
-    background-color: #000;
-    margin: auto;
-    position: relative;
-    display: none;
-}
+/*================= Instruction =================*/
+    .instruction {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000000;
+        background-color: #48296c;
+        color: #fff;
+        text-transform: capitalize;
+        margin-bottom: 30px;
+        padding: 0 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-self: center;
+    }
+    /* Instruction List */
+    .instruction ul {
+        list-style-type: auto;
+        width: 60%;
+        margin: auto;
+    }
+    /* Instruction List Item */
+    .instruction ul li {
+        font-size: 25px;
+        margin-bottom: 20px;
+        line-height: 2;
+        word-spacing: 2px;
+    }
+    /* Start Game Button */
+    .instruction button {
+        display: block;
+        width: 50%;
+        margin: 0 auto;
+        padding: 15px 0;
+        border-radius: 20px;
+        outline: none;
+        border: none;
+        font-size: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        text-transform: capitalize;
+    }
 
-/* Rope Column */
-.hang-man .draw .rope::before {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 3px;
-    height: 50px;
-    background-color: #000;
-    display: none;
-}
+/*================= Upper Bar =================*/
+    .hang-man .upper {
+        background-color: #48296c;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 70px;
+        text-transform: capitalize;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        padding: 10px 20px;
+    }
 
-/* Rope Dashed */
-.hang-man .draw .rope::after {
-    content: "";
-    position: absolute;
-    right: -33px;
-    top: 50px;
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border: 3px dashed #000;
-    background-color: transparent;
-    display: none;
-}
+    /* Brand Name */
+    .hang-man .upper .brand,
+    .hang-man .upper .category span {
+        font-weight: bold;
+        font-size: 23px;
+        color: #fff;
+    }
 
-/* Man Draw Container */
-.hang-man .draw .man {
-    position: absolute;
-    right: -8%;
-    top: 60px;
-}
+    /* Category Of Word */
+    .hang-man .upper .category {
+        font-size: 20px;
+        letter-spacing: 2px;
+        color: #ddd
+    }
 
-/* Man Head */
-.hang-man .draw .man .head {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 3px solid #000;
-    display: none;
-}
+/*================= Content Conatiner =================*/
+    .content {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 90vh;
+        align-items: center;
+        margin-top: 50px;
+    }
 
-/* Man arms */
-.hang-man .draw .man .arms {
-    width: 3px;
-    height: 110px;
-    background-color: #000;
-    margin: auto;
-    position: relative;
-    display: none;
-}
+/*================= Draw Container =================*/
+    .hang-man .draw {
+        position: relative;
+        padding-top: 20px;
+        width: 49%;
+        margin-right: 1%;
+        height: 300px;
+        background-color: #6fc28a;
+    }
 
-/* Grouping Man Arms*/
-.hang-man .draw .man .arms::before,
-.hang-man .draw .man .arms::after {
-    content: '';
-    position: absolute;
-    width: 3px;
-    height: 70px;
-    top: 25%;
-    background-color: #000;
-}
+    /* Draw Stand */
+    .hang-man .draw .stand {
+        width: 70px;
+        height: 3px;
+        background-color: #000;
+        margin: auto;
+        display: none;
+    }
 
-/* Right Arm */
-.hang-man .draw .man .arms::before {
-    transform: rotate(45deg);
-    left: -23px;
-}
+    /* Draw Column */
+    .hang-man .draw .col {
+        width: 3px;
+        height: 270px;
+        background-color: #000;
+        margin: auto;
+        display: none;
+    }
 
-/* Left Arm */
-.hang-man .draw .man .arms::after {
-    transform: rotate(-45deg);
-    right: -23px;
-}
+    /* Rope Stand */
+    .hang-man .draw .rope {
+        width: 250px;
+        height: 3px;
+        background-color: #000;
+        margin: auto;
+        position: relative;
+        display: none;
+    }
 
-/* Man Legs */
-.hang-man .draw .legs {
-    position: relative;
-}
+    /* Rope Column */
+    .hang-man .draw .rope::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 3px;
+        height: 50px;
+        background-color: #000;
+        display: none;
+    }
 
-/* Grouping Style Man Legs */
-.hang-man .draw .legs::before,
-.hang-man .draw .legs::after {
-    content: '';
-    position: absolute;
-    width: 3px;
-    height: 70px;
-    background-color: #000;
-    top: -25px;
-    display: none;
-}
+    /* Rope Dashed */
+    .hang-man .draw .rope::after {
+        content: "";
+        position: absolute;
+        right: -33px;
+        top: 50px;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px dashed #000;
+        background-color: transparent;
+        display: none;
+    }
 
-/* Right Leg */
-.hang-man .draw .legs::before{
-    transform: rotate(-45deg);
-    right: 0;
-}
+/*================= Man Draw Container =================*/
+    .hang-man .draw .man {
+        position: absolute;
+        right: -8%;
+        top: 60px;
+    }
 
-/* Left Leg */
-.hang-man .draw .legs::after {
-    transform: rotate(45deg);
-    left: 0;
-}
+    /* Man Head */
+    .hang-man .draw .man .head {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 3px solid #000;
+        display: none;
+    }
+
+    /* Man arms */
+    .hang-man .draw .man .arms {
+        width: 3px;
+        height: 110px;
+        background-color: #000;
+        margin: auto;
+        position: relative;
+        display: none;
+    }
+
+    /* Grouping Man Arms*/
+    .hang-man .draw .man .arms::before,
+    .hang-man .draw .man .arms::after {
+        content: '';
+        position: absolute;
+        width: 3px;
+        height: 70px;
+        top: 25%;
+        background-color: #000;
+    }
+
+    /* Right Arm */
+    .hang-man .draw .man .arms::before {
+        transform: rotate(45deg);
+        left: -23px;
+    }
+
+    /* Left Arm */
+    .hang-man .draw .man .arms::after {
+        transform: rotate(-45deg);
+        right: -23px;
+    }
+
+    /* Man Legs */
+    .hang-man .draw .legs {
+        position: relative;
+    }
+
+    /* Grouping Style Man Legs */
+    .hang-man .draw .legs::before,
+    .hang-man .draw .legs::after {
+        content: '';
+        position: absolute;
+        width: 3px;
+        height: 70px;
+        background-color: #000;
+        top: -25px;
+        display: none;
+    }
+
+    /* Right Leg */
+    .hang-man .draw .legs::before{
+        transform: rotate(-45deg);
+        right: 0;
+    }
+
+    /* Left Leg */
+    .hang-man .draw .legs::after {
+        transform: rotate(45deg);
+        left: 0;
+    }
 
 /*====== Show Hang Man Draw Every Wrong Try ======*/
-.hang-man .draw.wrong-1 .stand,
-.hang-man .draw.wrong-2 .col,
-.hang-man .draw.wrong-3 .rope,
-.hang-man .draw.wrong-4 .rope::before,
-.hang-man .draw.wrong-4 .rope::after,
-.hang-man .draw.wrong-5 .man .head,
-.hang-man .draw.wrong-6 .man .arms,
-.hang-man .draw.wrong-6 .man .arms::before,
-.hang-man .draw.wrong-6 .man .arms::after,
-.hang-man .draw.wrong-7 .man .legs,
-.hang-man .draw.wrong-8 .man .legs::before,
-.hang-man .draw.wrong-8 .man .legs::after {
-    display: block;
-}
-/*====== Show Letter To Clicked ======*/
+    .hang-man .draw.wrong-1 .stand,
+    .hang-man .draw.wrong-2 .col,
+    .hang-man .draw.wrong-3 .rope,
+    .hang-man .draw.wrong-4 .rope::before,
+    .hang-man .draw.wrong-4 .rope::after,
+    .hang-man .draw.wrong-5 .man .head,
+    .hang-man .draw.wrong-6 .man .arms,
+    .hang-man .draw.wrong-6 .man .arms::before,
+    .hang-man .draw.wrong-6 .man .arms::after,
+    .hang-man .draw.wrong-7 .man .legs,
+    .hang-man .draw.wrong-8 .man .legs::before,
+    .hang-man .draw.wrong-8 .man .legs::after {
+        display: block;
+    }
 
-/* Clicked Letters Panel */
-.hang-man .letters {
-    width: 49%;
-    margin-left: 1%;
-    height: 300px;
-    background-color: #f1f1f1;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
-    position: relative;
-}
+/*========== Letters Panel Container ===========*/
+    .hang-man .letters {
+        width: 49%;
+        margin-left: 1%;
+        height: 300px;
+        background-color: #000;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 10px;
+        position: relative;
+    }
 
-/* Clicked Letters */
-.hang-man .letters span {
-    cursor: pointer;
-    text-transform: capitalize;
-    height: 50px;
-    background-color: #009688;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    /* Letters Panel Buttons */
+    .hang-man .letters span {
+        cursor: pointer;
+        text-transform: capitalize;
+        height: 50px;
+        background-color: #48296c;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 7px;
+    }
 
-/* Get Hint Button */
-.get-hint {
-    background: red;
-    color: #fff;
-    font-size: 25px;
-    padding: 4px 17px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    box-shadow: 3px 3px 35px 0 rgb(0 0 0 / 40%);
-    text-transform: capitalize;
-    cursor: pointer;
-}
+    /* Get Hint Button */
+    .get-hint {
+        background: #48296c;
+        color: #fff;
+        font-size: 25px;
+        padding: 10px 17px;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        box-shadow: 3px 3px 35px 0 rgb(0 0 0 / 40%);
+        text-transform: capitalize;
+        cursor: pointer;
+        border-radius: 7px;
+    }
 
-/*====== Show Span Result ======*/
+/*================= Letter Gusses Container =================*/
+    .hang-man .letter-gusses {
+        width: 100%;
+        height: 40px;
+        background-color: #6fc28a;
+        display: flex;
+        justify-content: space-evenly;
+        padding: 30px 0;
+    }
 
-/* Letter Gusses Container */
-.hang-man .letter-gusses {
-    margin-top: 25px;
-    width: 100%;
-    height: 40px;
-    background-color: #ddd;
-    display: flex;
-    justify-content: space-evenly;
-    padding: 30px 0;
-}
+    /* Gusses Correct letter Span */
+    .hang-man .letter-gusses span {
+        position: relative;
+        width: 30px;
+        display: inline-block;
+        margin: 0 10px;
+        text-align: center;
+        text-transform: capitalize;
+        padding-bottom: 3px;
+        font-weight: bold;
+    }
 
-/* Gusses Correct letter Span */
-.hang-man .letter-gusses span {
-    position: relative;
-    width: 30px;
-    display: inline-block;
-    margin: 0 10px;
-    text-align: center;
-    text-transform: capitalize;
-}
+    /* Gusses Correct letter Bottom Dashed */
+    .hang-man .letter-gusses span::after,
+    .hang-man .letter-gusses .empty::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -30px;
+        width: 100%;
+        height: 2px;
+        background-color: #000;
+        display: inline-block;
+        margin: 8px 0;
+    }
 
-/* Gusses Right letter Bottom Dashed */
-.hang-man .letter-gusses span::after,
-.hang-man .letter-gusses .empty::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -30px;
-    width: 100%;
-    height: 2px;
-    background-color: #000;
-    display: inline-block;
-    margin: 8px 0;
-}
-/* Make Dash On Space Between The Words */
-.hang-man .letter-gusses .empty::after {
-    bottom: 50%;
-    background-color: red;
-}
+    /* Create Dash On The Space Between The Words */
+    .hang-man .letter-gusses .empty::after {
+        bottom: 50%;
+        background-color: red;
+    }
 
-/* POPUP Container */
+/************* POPUP Result Container *************/
     .game-over, .finished {
         position: absolute;
         width: 100%;
         height: 100%;
-        background: #009688;
+        background: #6fc28a;
         font-weight: bold;
         font-size: 25px;
         color: #fff;
@@ -310,29 +362,33 @@
         flex-wrap: wrap;
         z-index: 1000;
     }
-    /* POPUP Message */
+    /* POPUP Result Message */
     .game-over p, .finished p {
         width: 100%;
         text-align: center;
         line-height: 2;
         text-transform: capitalize;
         padding: 0 30px;
+        color: #000;
     }
     /* Last Result Word On POPUP */
     .game-over p span, .finished p span {
-        color: #ffeb3b !important;
+        background-color: transparent !important;
+        color: #48296c !important;
         font-weight: bold;
+        text-decoration: underline;
     }
     /* POPUP Button */
     .game-over button, .finished button {
         display: block;
-        padding: 7px 30px;
+        padding: 10px 30px;
         cursor: pointer;
-        background: red;
+        background: #48296c;
         color: #fff;
         border: none;
         outline: none;
         margin: auto;
+        border-radius: 7px;
     }
 
 /**** Start Responsive Code  *****/
@@ -340,10 +396,16 @@
         .hang-man .draw, .hang-man .letters {
             width:  100%;
         }
-        .instruction {
-            display: flex;
-            order: 3;
-            margin-top: 20px;
+        .instruction ul, 
+        .instruction button {
+           width: 100%;
+        }
+        .hang-man .upper .brand,
+        .hang-man .upper .category span {
+            font-size: 20px;
+        }
+        .hang-man .upper .category {
+            letter-spacing: 0;
         }
     }
 /**** End Responsive Code  *****/

@@ -6,15 +6,30 @@
 (function hangManApp() {
 
 		// Main Vars
-		let letters      = 'abcdefghijklmnopqurstvwyxz';
-		let lettersCont  = document.querySelector('.hang-man .letters');
-		let category     = document.querySelector('.hang-man .category span') ;
-		let gussesLetter = document.querySelector('.letter-gusses');
-		let draw         = document.querySelector('.draw');
-		let attempts     = 0;
+		let letters       = 'abcdefghijklmnopqurstvwyxz';
+		let lettersCont   = document.querySelector('.hang-man .letters');
+		let category      = document.querySelector('.hang-man .category span') ;
+		let gussesLetter  = document.querySelector('.letter-gusses');
+		let draw          = document.querySelector('.draw');
+		let start_btn     = document.getElementById('start-game-btn');
+		let attempts      = 0;
+		let getHint       = document.createElement('btn');
+		let success_sound = new Audio('./sound/succses.wav');
+		let fail_sound    = new Audio('./sound/fail.wav');
+		let game_over     = new Audio('./sound/gameover.wav');
+		let clapping_sound    = new Audio('./sound/clapping.wav');
 
-		// Create Get Hint Button
-		let getHint = document.createElement('btn');
+
+		// Show The Instruction Info Only First Login To The Game 
+		if(sessionStorage.getItem('state') === 'hidden') {
+			document.querySelector('.instruction').remove();
+		}
+
+		// Start Button To Remove Instruction & Set The State To sessionStorage
+		start_btn.onclick = ()=> {
+			sessionStorage.state = 'hidden';
+			document.querySelector('.instruction').remove();
+		}
 
 		// Generate Letters Spans
 		letters.split('').forEach(letter => {
@@ -114,8 +129,11 @@
 					// Loop The Word By Map To Check The Correct Letter.
 					theWord.split('').map((ele, index) => {
 						if(lt === ele) {
-
+							// Change Status
 							stat = true;
+
+							// Run Success Sound
+							success_sound.play();
 
 							// Set The Clicked Letter To Gusses Span 
 							gussesLetter.children[index].innerHTML = ele;
@@ -130,6 +148,9 @@
 						// Incress Attempts Number
 						attempts++; 
 
+						// Run Success Sound
+						fail_sound.play();
+
 						// Add Wrong Class To Draw
 						draw.classList.add(`wrong-${attempts}`); 
 						
@@ -141,7 +162,7 @@
 						if(attempts === 8) { 
 							
 							// Print Game Over POPUp
-							finished('game-over', `Game Over The Target Word Is: <span>${targetWord}</span>`, 'Try Again', 'lose', 'try-again');
+							finished('game-over', `Game Over The Target Word Is: <span>${targetWord}</span>`, 'Try Again', 'lose', 'try-again', game_over);
 
 							// Reset Attempts To Zero
 							attempts = 0; 
@@ -156,12 +177,27 @@
 
 							// The Hint Button On Click Action.
 							getHint.onclick = ()=> {
-								
+								// Handel If The Hint Letter Is Already Selected
+								Array.from(gussesLetter.children).forEach( (ele)=> {
+									if(ele.textContent === randLett) {
+										if(theWord.length !== randNum) {
+											randNum++;
+										} else {
+											randNum--;
+										};
+									};
+								});
+
 								// Hide The Button
 								getHint.remove();
 
 								// Set The Letter To Result Gusess Board.
 								gussesLetter.children[randNum].innerHTML = randLett;
+
+								// Active Letter On From Letters Panel 
+								Array.from(lettersCont.children).forEach( (e) => {
+									e.textContent == randLett ? e.click() : null;
+								});
 							};
 						};
 					};
@@ -177,12 +213,12 @@
 					// Check If The User End Word Correct
 					if(newWord === theWord) { 
 						// Show Congrats POPUP
-						finished('finished', `Good Job The Word Is: <span>${targetWord}</span>`, 'Next Word', 'win', 'next-word');
+						finished('finished', `Good Job The Word Is: <span>${targetWord}</span>`, 'Next Word', 'win', 'next-word', clapping_sound);
 					};
 				};
 
 				// Function Create The PoPUP
-				function finished(parentMsg, msgText, btnText, msgClass, btnClass) {
+				function finished(parentMsg, msgText, btnText, msgClass, btnClass, sound) {
 					
 					// Message & Button
 					let parent  = document.createElement('div');
@@ -201,8 +237,10 @@
 					// Appended Elements
 					parent.appendChild(message);
 					parent.appendChild(btn);
-
 					lettersCont.prepend(parent);
+
+					// Play The Sound
+					sound.play();
 
 					// Click The Button To Play Again
 					btn.onclick = ()=> {

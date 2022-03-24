@@ -6,7 +6,7 @@
 	<!-- App Title -->
 	<title>Hang Man Game</title>
 	<!-- Favicon -->
-	<link rel="icon" href="images/icon.png" />
+	<link rel="icon" href="images/icon.jpg" />
 	<!-- Css Main File -->
 	<link rel="stylesheet" href="css/hang.css" />
 </head>
@@ -14,17 +14,6 @@
 	<!-- Start Main App Container -->
 	<div class="container">
 		<div class="hang-man">
-			<!-- Upper Bar -->
-			<div class="upper">
-				<!-- App Name -->
-				<div class="brand">
-					<h3>hang man</h3>
-				</div>
-				<!-- category -->
-				<div class="category">
-					category is : <span></span>
-				</div>
-			</div>
 			<!-- App Instraction -->
 			<div class="instruction">
 				<ul>
@@ -37,24 +26,42 @@
 					<li>
 						the choose correct letter will be show on bottom bar .
 					</li>
+					<li>
+						you get hint if the word bigger than 5 letters, and you select letters 3 time wrong .
+					</li>
 				</ul>
+				<button id="start-game-btn">start game</button>
 			</div>
-			<!-- Draw -->
-			<div class="draw">
-				<div class="rope">
-					<div class="man">
-						<div class="head"></div>
-						<div class="arms"></div>
-						<div class="legs"></div>
-					</div>
+			<!-- Upper Bar -->
+			<div class="upper">
+				<!-- App Name -->
+				<div class="brand">
+					<h3>hang man</h3>
 				</div>
-				<div class="col"></div>
-				<div class="stand"></div>
+				<!-- category -->
+				<div class="category">
+					category is : <span></span>
+				</div>
 			</div>
-			<!-- Letter To clicked -->
-			<div class="letters"></div>
-			<!-- Letter gusess -->
-			<div class="letter-gusses"></div>
+			<!-- Content Container -->
+			<div class="content">
+				<!-- Draw -->
+				<div class="draw">
+					<div class="rope">
+						<div class="man">
+							<div class="head"></div>
+							<div class="arms"></div>
+							<div class="legs"></div>
+						</div>
+					</div>
+					<div class="col"></div>
+					<div class="stand"></div>
+				</div>
+				<!-- Letter To clicked -->
+				<div class="letters"></div>
+				<!-- Letter gusess -->
+				<div class="letter-gusses"></div>
+			</div>
 		</div>		
 	</div>
 	<!-- End Main App Container -->
