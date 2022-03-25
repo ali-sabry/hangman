@@ -397,7 +397,14 @@ body {
              padding: 10px 15px;
          }
         .hang-man .draw, .hang-man .letters {
-            width:  100%;
+            width: 100%;
+            margin: 0;
+        }
+        .hang-man .draw .rope {
+           right: -30px;
+        }
+        .hang-man .draw .man {
+           right: -6px;
         }
         .instruction ul, 
         .instruction button {
@@ -405,7 +412,7 @@ body {
         }
         .hang-man .upper .brand,
         .hang-man .upper .category span {
-            font-size: 20px;
+            font-size: 18px;
         }
         .hang-man .upper .category {
             letter-spacing: 0;
