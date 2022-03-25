@@ -143,6 +143,7 @@ body {
         background-color: #000;
         margin: auto;
         position: relative;
+        right: 27px;
         display: none;
     }
 
@@ -234,7 +235,7 @@ body {
         width: 3px;
         height: 70px;
         background-color: #000;
-        top: -25px;
+        top: -16px;
         display: none;
     }
 
@@ -392,33 +393,60 @@ body {
     }
 
 /**** Start Responsive Code  *****/
+    /*=============== Mobile Screen & Small Tablet ==============*/
     @media screen and (max-width: 576px) {
+        /*=============== Content Conatiner ==============*/
         .content {
-             padding: 10px 15px;
-         }
+            padding: 10px 15px;
+        }
+
+        /*=============== Draw Container & Letters Containers ==============*/
         .hang-man .draw, .hang-man .letters {
             width: 100%;
             margin: 0;
         }
-        .hang-man .draw .rope {
-           right: -35px;
+
+        /*=============== Result POPUP ==============*/
+        .game-over, .finished {
+            box-shadow: 0 0 40px 0 rgb(0 0 0 / 40%);
         }
-        .hang-man .draw .man {
-           right: -10px;
-        }
+
+        /*=============== Instruction Page ==============*/
         .instruction ul, 
         .instruction button {
            width: 100%;
         }
+
+        /*=============== Upper Bar  ==============*/
         .hang-man .upper .brand,
         .hang-man .upper .category span {
-            font-size: 18px;
+            font-size: 16px;
         }
         .hang-man .upper .category {
             letter-spacing: 0;
         }
+    }
+
+    /*=============== Small Iphone & Other Small Screen ==============*/
+    @media screen and (max-width: 376px) {
+        /*=============== Upper Bar  ==============*/
+        .hang-man .upper .brand,
+        .hang-man .upper .category span {
+            font-size: 15px;
+        }
+
+        /*=============== Instruction Page ==============*/
         .instruction {
-           heigth: 200vh 
+           min-height: 110vh; 
+        }
+        
+        /*=============== Content Conatiner ==============*/
+        .hang-man .draw .rope {
+           right: 30px;
+        }
+        .hang-man .draw .man {
+           right: -20px;
         }
     }
+
 /**** End Responsive Code  *****/
