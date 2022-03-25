@@ -393,6 +393,9 @@ body {
 
 /**** Start Responsive Code  *****/
     @media screen and (max-width: 576px) {
+        .content {
+             padding: 10px 15px;
+         }
         .hang-man .draw, .hang-man .letters {
             width:  100%;
         }
