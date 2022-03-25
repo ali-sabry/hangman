@@ -401,10 +401,10 @@ body {
             margin: 0;
         }
         .hang-man .draw .rope {
-           right: -30px;
+           right: -35px;
         }
         .hang-man .draw .man {
-           right: -6px;
+           right: -10px;
         }
         .instruction ul, 
         .instruction button {
