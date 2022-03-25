@@ -8,7 +8,7 @@ Guess Word In Your Mind !!.
 <hr />
 
 # Preview Link
-[Preview Link](https://ali-sabry.github.io/hangman/)
+[Preview Link](https://ali-sabry.github.io/hangman-game/)
 
 <hr />
 
